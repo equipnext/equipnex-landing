@@ -3,104 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EquipNext (EQ) | The Modern Creative & Performance Studio</title>
-    <meta name="description" content="Step out of boring tutorials and into high-income career mastery. Master Performance Marketing and Creative Tech in Kerala.">
+    <title>EquipNext | Creative Studio & Performance Hub</title>
     <style>
-        :root {
-            --terracotta: #D97706;
-            --purple: #7C3AED;
-            --dark: #0F172A;
-            --gray: #475569;
-            --bg: #FFFFFF;
-            --card-bg: #FAFAF9;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--dark); line-height: 1.5; }
-        
-        /* Header */
-        header { padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #F1F5F9; }
-        .logo { font-size: 24px; font-weight: 900; letter-spacing: -1px; color: var(--dark); }
-        .logo span { color: var(--terracotta); }
-        .badge-eq { background: var(--purple); color: #fff; padding: 4px 10px; font-size: 12px; font-weight: bold; border-radius: 20px; margin-left: 8px; }
-
-        /* Hero */
-        .hero { max-width: 900px; margin: 80px auto 40px; padding: 0 20px; text-align: center; }
-        .tag { display: inline-block; background: #FEF3C7; color: var(--terracotta); padding: 6px 14px; border-radius: 30px; font-size: 13px; font-weight: 700; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1px; }
-        h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 900; line-height: 1.1; letter-spacing: -2px; margin-bottom: 24px; color: var(--dark); }
-        h1 span { background: linear-gradient(135deg, var(--terracotta), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: clamp(16px, 2vw, 20px); color: var(--gray); max-width: 700px; margin: 0 auto 40px; }
-
-        /* Action Buttons */
-        .cta-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 60px; }
-        .btn-primary { background: var(--dark); color: #fff; padding: 16px 32px; border-radius: 12px; font-weight: 700; text-decoration: none; transition: transform 0.2s, background 0.2s; }
-        .btn-primary:hover { background: var(--purple); transform: translateY(-2px); }
-        .btn-secondary { background: var(--card-bg); color: var(--dark); border: 1px solid #E2E8F0; padding: 16px 32px; border-radius: 12px; font-weight: 700; text-decoration: none; }
-
-        /* Pillars Grid */
-        .grid-section { max-width: 1100px; margin: 60px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-        .card { background: var(--card-bg); border: 1px solid #F1F5F9; padding: 40px; border-radius: 24px; text-align: left; transition: border-color 0.2s; }
-        .card:hover { border-color: var(--purple); }
-        .card h3 { font-size: 24px; font-weight: 800; margin-bottom: 12px; color: var(--dark); }
-        .card p { color: var(--gray); font-size: 15px; margin-bottom: 20px; }
-        .card ul { list-style: none; }
-        .card ul li { font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-        .card ul li::before { content: "•"; color: var(--terracotta); font-size: 20px; }
-
-        /* Anti-Coaching Banner */
-        .anti-banner { max-width: 1000px; margin: 80px auto; background: linear-gradient(135deg, #0F172A, #1E1B4B); color: #fff; padding: 60px 40px; border-radius: 32px; text-align: center; }
-        .anti-banner h2 { font-size: 32px; font-weight: 900; margin-bottom: 16px; }
-        .anti-banner p { color: #94A3B8; max-width: 600px; margin: 0 auto; font-size: 16px; }
-
-        /* Footer */
-        footer { padding: 40px 20px; text-align: center; border-top: 1px solid #F1F5F9; color: var(--gray); font-size: 14px; margin-top: 80px; }
-        footer span { color: var(--terracotta); font-weight: 700; }
+        :root { --terracotta: #D97706; --purple: #7C3AED; --bg: #FFFFFF; --dark: #0F172A; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--dark); margin: 0; padding-bottom: 80px; }
+        .hero { padding: 80px 5%; text-align: center; }
+        h1 { font-size: 3rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 20px; }
+        h1 span { color: var(--purple); }
+        .form-container { max-width: 400px; margin: 40px auto; padding: 30px; border: 2px solid var(--dark); border-radius: 20px; }
+        input, select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px; }
+        button { width: 100%; padding: 15px; background: var(--purple); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
     </style>
 </head>
 <body>
-
-    <header>
-        <div class="logo">EquipNext <span class="badge-eq">EQ</span></div>
-    </header>
-
+    <header style="padding: 20px; text-align: center;"><h2>EquipNext</h2></header>
+    
     <section class="hero">
-        <span class="tag">August 2026 Cohort Open</span>
-        <h1>Step Into The Studio. <span>Master High-Income Skills.</span></h1>
-        <p>An anti-tutorial creative incubator and performance marketing hub in Kerala. Learn by building real campaigns, designing elite workflows, and collaborating alongside a peer group.</p>
-        <div class="cta-group">
-            <a href="https://wa.me/91XXXXXXXXXX?text=Hi,%20I%20want%20to%20explore%20EquipNext%20programs." class="btn-primary">Explore Programs</a>
-            <a href="#pillars" class="btn-secondary">View Curriculum</a>
+        <h1>High-Income <span>Creative Mastery</span></h1>
+        <p>Your studio for Meta Ads, UI/UX, and Modern Tech workflows.</p>
+        
+        <div class="form-container">
+            <h3>Join Next Cohort</h3>
+            <form id="leadForm">
+                <input type="text" id="name" placeholder="Full Name" required>
+                <select id="course">
+                    <option value="Performance Marketing">Performance Marketing</option>
+                    <option value="Creative Design & Tech">Creative Design & Tech</option>
+                </select>
+                <button type="submit">Send to WhatsApp</button>
+            </form>
         </div>
     </section>
 
-    <div class="anti-banner">
-        <h2>Not A Boring Tutorial Center. A Creative Studio.</h2>
-        <p>We've stripped away the heavy academic dread of exam halls. Here, you build live ad funnels, edit high-conversion video assets, and step straight into modern freelance or agency careers.</p>
-    </div>
+    <a href="https://wa.me/917306680158" class="whatsapp-float">Chat on WhatsApp</a>
 
-    <section id="pillars" class="grid-section">
-        <div class="card">
-            <h3>Performance Marketing</h3>
-            <p>Master digital demand generation and scale brands globally.</p>
-            <ul>
-                <li>Meta Ads & Google Ads Mastery</li>
-                <li>Funnel Optimization & Media Buying</li>
-                <li>Real Budget Campaign Testing</li>
-            </ul>
-        </div>
-        <div class="card">
-            <h3>Creative Design & Tech</h3>
-            <p>Craft high-fashion visual assets and modern workflows.</p>
-            <ul>
-                <li>UI/UX & Editorial Layout Principles</li>
-                <li>Advanced Video Editing (DaVinci & Photoshop)</li>
-                <li>AI-Assisted Digital Workflows</li>
-            </ul>
-        </div>
-    </section>
-
-    <footer>
-        <p>EquipNext (EQ) • Operational Hub in <span>Kerala, India</span> • Built for the Creative Future.</p>
-    </footer>
-
+    <script>
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const course = document.getElementById('course').value;
+            const msg = `Hi, I am ${name}. I want to join the ${course} course at EquipNext.`;
+            window.open(`https://wa.me/917306680158?text=${encodeURIComponent(msg)}`, '_blank');
+        });
+    </script>
 </body>
 </html>
