@@ -3,47 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EquipNex | Professional Career & Skills Institute</title>
-    <meta name="description" content="Master high-demand tech and marketing skills with industry-certified training programs in Kerala.">
+    <title>EquipNex (EQ) | The Modern Creative & Performance Studio</title>
+    <meta name="description" content="Step out of boring tutorials and into high-income career mastery. Master Performance Marketing and Creative Tech in Kerala.">
     <style>
-        :root { --primary: #0f172a; --accent: #22c55e; --bg: #f8fafc; }
-        body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--primary); margin: 0; padding: 0; line-height: 1.6; }
-        header { background: #ffffff; padding: 20px 40px; border-bottom: 1px solid #e2e8f0; text-align: center; }
-        .logo { font-weight: 800; font-size: 24px; color: var(--primary); letter-spacing: -0.5px; }
-        .hero { max-width: 700px; margin: 40px auto; padding: 20px; text-align: center; }
-        h1 { font-size: 32px; margin-bottom: 20px; color: var(--primary); }
-        p { color: #475569; font-size: 16px; margin-bottom: 30px; }
-        .lead-box { background: #ffffff; padding: 30px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: left; }
-        .form-group { margin-bottom: 20px; }
-        label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; }
-        input { width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 16px; box-sizing: border-box; }
-        button { width: 100%; background: var(--accent); color: white; border: none; padding: 14px; font-size: 16px; font-weight: bold; border-radius: 8px; cursor: pointer; }
+        :root {
+            --terracotta: #D97706;
+            --purple: #7C3AED;
+            --dark: #0F172A;
+            --gray: #475569;
+            --bg: #FFFFFF;
+            --card-bg: #FAFAF9;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--dark); line-height: 1.5; }
+        
+        /* Header */
+        header { padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #F1F5F9; }
+        .logo { font-size: 24px; font-weight: 900; letter-spacing: -1px; color: var(--dark); }
+        .logo span { color: var(--terracotta); }
+        .badge-eq { background: var(--purple); color: #fff; padding: 4px 10px; font-size: 12px; font-weight: bold; border-radius: 20px; margin-left: 8px; }
+
+        /* Hero */
+        .hero { max-width: 900px; margin: 80px auto 40px; padding: 0 20px; text-align: center; }
+        .tag { display: inline-block; background: #FEF3C7; color: var(--terracotta); padding: 6px 14px; border-radius: 30px; font-size: 13px; font-weight: 700; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1px; }
+        h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 900; line-height: 1.1; letter-spacing: -2px; margin-bottom: 24px; color: var(--dark); }
+        h1 span { background: linear-gradient(135deg, var(--terracotta), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: clamp(16px, 2vw, 20px); color: var(--gray); max-width: 700px; margin: 0 auto 40px; }
+
+        /* Action Buttons */
+        .cta-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 60px; }
+        .btn-primary { background: var(--dark); color: #fff; padding: 16px 32px; border-radius: 12px; font-weight: 700; text-decoration: none; transition: transform 0.2s, background 0.2s; }
+        .btn-primary:hover { background: var(--purple); transform: translateY(-2px); }
+        .btn-secondary { background: var(--card-bg); color: var(--dark); border: 1px solid #E2E8F0; padding: 16px 32px; border-radius: 12px; font-weight: 700; text-decoration: none; }
+
+        /* Pillars Grid */
+        .grid-section { max-width: 1100px; margin: 60px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .card { background: var(--card-bg); border: 1px solid #F1F5F9; padding: 40px; border-radius: 24px; text-align: left; transition: border-color 0.2s; }
+        .card:hover { border-color: var(--purple); }
+        .card h3 { font-size: 24px; font-weight: 800; margin-bottom: 12px; color: var(--dark); }
+        .card p { color: var(--gray); font-size: 15px; margin-bottom: 20px; }
+        .card ul { list-style: none; }
+        .card ul li { font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .card ul li::before { content: "•"; color: var(--terracotta); font-size: 20px; }
+
+        /* Anti-Coaching Banner */
+        .anti-banner { max-width: 1000px; margin: 80px auto; background: linear-gradient(135deg, #0F172A, #1E1B4B); color: #fff; padding: 60px 40px; border-radius: 32px; text-align: center; }
+        .anti-banner h2 { font-size: 32px; font-weight: 900; margin-bottom: 16px; }
+        .anti-banner p { color: #94A3B8; max-width: 600px; margin: 0 auto; font-size: 16px; }
+
+        /* Footer */
+        footer { padding: 40px 20px; text-align: center; border-top: 1px solid #F1F5F9; color: var(--gray); font-size: 14px; margin-top: 80px; }
+        footer span { color: var(--terracotta); font-weight: 700; }
     </style>
 </head>
 <body>
+
     <header>
-        <div class="logo">EquipNex</div>
+        <div class="logo">EquipNex <span class="badge-eq">EQ</span></div>
     </header>
 
-    <div class="hero">
-        <h1>Accelerate Your Career With Expert-Led Training</h1>
-        <p>Gain hands-on mastery in modern digital disciplines. Real-world projects, expert mentorship, and direct placement support.</p>
-        
-        <div class="lead-box">
-            <h3 style="margin-top:0; margin-bottom:15px;">Get Course Syllabus & Fee Details</h3>
-            <form>
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" required placeholder="Enter your name">
-                </div>
-                <div class="form-group">
-                    <label for="phone">WhatsApp Number</label>
-                    <input type="tel" id="phone" required placeholder="+91 XXXXX XXXXX">
-                </div>
-                <button type="submit">Get Instant Access</button>
-            </form>
+    <section class="hero">
+        <span class="tag">August 2026 Cohort Open</span>
+        <h1>Step Into The Studio. <span>Master High-Income Skills.</span></h1>
+        <p>An anti-tutorial creative incubator and performance marketing hub in Kerala. Learn by building real campaigns, designing elite workflows, and collaborating alongside a peer group.</p>
+        <div class="cta-group">
+            <a href="https://wa.me/91XXXXXXXXXX?text=Hi,%20I%20want%20to%20explore%20EquipNex%20programs." class="btn-primary">Explore Programs</a>
+            <a href="#pillars" class="btn-secondary">View Curriculum</a>
         </div>
+    </section>
+
+    <div class="anti-banner">
+        <h2>Not A Boring Tutorial Center. A Creative Studio.</h2>
+        <p>We've stripped away the heavy academic dread of exam halls. Here, you build live ad funnels, edit high-conversion video assets, and step straight into modern freelance or agency careers.</p>
     </div>
+
+    <section id="pillars" class="grid-section">
+        <div class="card">
+            <h3>Performance Marketing</h3>
+            <p>Master digital demand generation and scale brands globally.</p>
+            <ul>
+                <li>Meta Ads & Google Ads Mastery</li>
+                <li>Funnel Optimization & Media Buying</li>
+                <li>Real Budget Campaign Testing</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Creative Design & Tech</h3>
+            <p>Craft high-fashion visual assets and modern workflows.</p>
+            <ul>
+                <li>UI/UX & Editorial Layout Principles</li>
+                <li>Advanced Video Editing (DaVinci & Photoshop)</li>
+                <li>AI-Assisted Digital Workflows</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>EquipNex (EQ) • Operational Hub in <span>Kerala, India</span> • Built for the Creative Future.</p>
+    </footer>
+
 </body>
 </html>
-
