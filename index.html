@@ -4,20 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EquipNext | Creative Studio & Performance Hub</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
     <style>
         :root { --terracotta: #D97706; --purple: #7C3AED; --bg: #FFFFFF; --dark: #0F172A; }
         body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--dark); margin: 0; padding-bottom: 80px; }
-        .hero { padding: 80px 5%; text-align: center; }
-        h1 { font-size: 3rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 20px; }
+        header { padding: 20px 5%; display: flex; align-items: center; border-bottom: 1px solid #F1F5F9; }
+        .logo-img { height: 45px; width: auto; object-fit: contain; }
+        .hero { padding: 60px 5%; text-align: center; }
+        h1 { font-size: 2.5rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 20px; }
         h1 span { color: var(--purple); }
-        .form-container { max-width: 400px; margin: 40px auto; padding: 30px; border: 2px solid var(--dark); border-radius: 20px; }
-        input, select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px; }
-        button { width: 100%; padding: 15px; background: var(--purple); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
-        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .form-container { max-width: 400px; margin: 40px auto; padding: 30px; border: 2px solid var(--dark); border-radius: 20px; background: #FAFAF9; text-align: left; }
+        input, select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 8px; font-size: 15px; }
+        button { width: 100%; padding: 15px; background: var(--purple); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 15px; }
+        button:hover { background: #6D28D9; }
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 100; }
     </style>
 </head>
 <body>
-    <header style="padding: 20px; text-align: center;"><h2>EquipNext</h2></header>
+    <header>
+        <img src="logo.png" alt="EquipNext Logo" class="logo-img">
+    </header>
     
     <section class="hero">
         <h1>High-Income <span>Creative Mastery</span></h1>
@@ -26,17 +33,21 @@
         <div class="form-container">
             <h3>Join Next Cohort</h3>
             <form id="leadForm">
-                <input type="text" id="name" placeholder="Full Name" required>
+                <label style="font-size: 13px; font-weight: bold;">Full Name</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+                
+                <label style="font-size: 13px; font-weight: bold;">Choose Course</label>
                 <select id="course">
                     <option value="Performance Marketing">Performance Marketing</option>
                     <option value="Creative Design & Tech">Creative Design & Tech</option>
                 </select>
-                <button type="submit">Send to WhatsApp</button>
+                
+                <button type="submit" style="margin-top: 15px;">Send to WhatsApp</button>
             </form>
         </div>
     </section>
 
-    <a href="https://wa.me/917306680158" class="whatsapp-float">Chat on WhatsApp</a>
+    <a href="https://wa.me/917306680158?text=Hi,%20I%20want%20to%20know%20more%20about%20EquipNext." class="whatsapp-float">Chat on WhatsApp</a>
 
     <script>
         document.getElementById('leadForm').addEventListener('submit', function(e) {
