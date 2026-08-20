@@ -3,188 +3,329 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EquipNext | Modern Creative & Performance Studio</title>
+    <title>EquipNext | Modern Creative & Tech Academy</title>
     <link rel="icon" type="image/png" href="logo.png">
     <style>
         :root { --terracotta: #D97706; --purple: #7C3AED; --bg: #FFFFFF; --dark: #0F172A; --card-bg: #FAFAF9; }
-        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
-        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--dark); line-height: 1.6; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
+        body { background: var(--bg); color: var(--dark); line-height: 1.6; }
         
-        /* Sticky Functional Header */
-        header { padding: 20px 6%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #F1F5F9; position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 100; }
-        .logo-img { height: 55px; width: auto; object-fit: contain; }
-        nav { display: flex; gap: 20px; align-items: center; }
-        nav a { text-decoration: none; color: #475569; font-weight: 600; font-size: 14px; transition: color 0.2s; }
-        nav a:hover { color: var(--purple); }
-        .nav-btn { background: var(--purple); color: #fff !important; padding: 10px 20px; border-radius: 8px; font-weight: 700; }
+        /* Sticky Navigation */
+        header { padding: 20px 6%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #F1F5F9; position: sticky; top: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); z-index: 1000; }
+        .logo-img { height: 55px; width: auto; object-fit: contain; cursor: pointer; }
+        nav { display: flex; gap: 24px; align-items: center; }
+        nav a { text-decoration: none; color: #475569; font-weight: 600; font-size: 15px; cursor: pointer; transition: color 0.2s; }
+        nav a:hover, nav a.active { color: var(--purple); }
+        .nav-btn { background: var(--purple); color: #fff !important; padding: 10px 22px; border-radius: 8px; font-weight: 700; }
 
-        /* Hero */
-        .hero { max-width: 1000px; margin: 60px auto 40px; padding: 0 20px; text-align: center; }
-        .tag { display: inline-block; background: #FEF3C7; color: var(--terracotta); padding: 6px 14px; border-radius: 30px; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
-        h1 { font-size: clamp(36px, 5vw, 60px); font-weight: 900; letter-spacing: -2px; margin-bottom: 20px; line-height: 1.1; }
-        h1 span { background: linear-gradient(135deg, var(--terracotta), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { color: #475569; font-size: 1.15rem; max-width: 700px; margin: 0 auto 40px; }
+        /* Pages System */
+        .page { display: none; padding: 40px 6%; min-height: 80vh; animation: fadeIn 0.3s ease-in-out; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Interactive Category Tabs */
-        .tabs-container { max-width: 900px; margin: 40px auto; padding: 0 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-        .tab-btn { background: #F1F5F9; border: 1px solid #CBD5E1; color: var(--dark); padding: 12px 24px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; font-size: 14px; }
-        .tab-btn.active, .tab-btn:hover { background: var(--dark); color: #fff; border-color: var(--dark); }
+        /* Hero Section */
+        .hero { max-width: 900px; margin: 40px auto; text-align: center; }
+        .hero h1 { font-size: clamp(36px, 5vw, 58px); font-weight: 900; letter-spacing: -2px; margin-bottom: 20px; line-height: 1.1; }
+        .hero h1 span { background: linear-gradient(135deg, var(--terracotta), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { color: #475569; font-size: 1.15rem; max-width: 700px; margin: 0 auto 35px; }
 
-        /* Sections */
-        .section-container { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
-        .section-title { font-size: 2.2rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 10px; text-align: center; }
-        .section-desc { color: #475569; text-align: center; margin-bottom: 40px; font-size: 1.05rem; }
-
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .card { background: var(--card-bg); border: 1px solid #E2E8F0; padding: 40px; border-radius: 24px; transition: border-color 0.2s; position: relative; }
-        .card:hover { border-color: var(--purple); }
-        .card-icon { font-size: 36px; margin-bottom: 20px; display: inline-block; background: #FEF3C7; padding: 12px; border-radius: 16px; }
-        .card h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 15px; color: var(--dark); }
+        /* Grid & Cards */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
+        .card { background: var(--card-bg); border: 1px solid #E2E8F0; padding: 35px; border-radius: 20px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
+        .card:hover { border-color: var(--purple); transform: translateY(-3px); }
+        .card-icon { font-size: 32px; margin-bottom: 15px; display: inline-block; background: #FEF3C7; padding: 10px; border-radius: 12px; }
+        .card h3 { font-size: 1.35rem; font-weight: 800; margin-bottom: 12px; color: var(--dark); }
         .card p { color: #475569; font-size: 0.95rem; margin-bottom: 20px; }
-        .card ul { list-style: none; }
-        .card ul li { font-size: 14px; font-weight: 600; color: #1E293B; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .card ul { list-style: none; margin-bottom: 20px; }
+        .card ul li { font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
         .card ul li::before { content: "✓"; color: var(--purple); font-weight: bold; }
+        .btn-card { background: var(--dark); color: #fff; text-align: center; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 14px; transition: background 0.2s; cursor: pointer; border: none; width: 100%; }
+        .btn-card:hover { background: var(--purple); }
 
-        /* Form Section */
-        .form-section { background: var(--dark); color: #fff; padding: 80px 20px; text-align: center; margin-top: 80px; }
-        .form-wrapper { max-width: 500px; margin: 40px auto 0; background: #1E293B; padding: 40px; border-radius: 24px; text-align: left; border: 1px solid #334155; }
-        .form-wrapper label { font-size: 13px; font-weight: 700; color: #94A3B8; display: block; margin-bottom: 6px; }
-        .form-wrapper input, .form-wrapper select { width: 100%; padding: 14px; margin-bottom: 20px; background: #0F172A; border: 1px solid #475569; border-radius: 10px; color: #fff; font-size: 15px; }
-        .form-wrapper button { width: 100%; padding: 16px; background: var(--purple); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 16px; transition: background 0.2s; }
-        .form-wrapper button:hover { background: #6D28D9; }
+        /* Form Container */
+        .form-box { max-width: 600px; margin: 20px auto; background: var(--card-bg); padding: 40px; border: 1px solid #E2E8F0; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
+        .form-box label { font-size: 13px; font-weight: 700; color: #334155; display: block; margin-bottom: 6px; }
+        .form-box input, .form-box select, .form-box textarea { width: 100%; padding: 14px; margin-bottom: 20px; background: #FFF; border: 1px solid #CBD5E1; border-radius: 10px; font-size: 15px; }
+        .form-box button { width: 100%; padding: 16px; background: var(--purple); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 16px; }
+        .form-box button:hover { background: #6D28D9; }
 
-        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; padding: 14px 24px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 100; display: flex; align-items: center; gap: 8px; font-size: 14px; }
-        
-        footer { padding: 40px 20px; text-align: center; border-top: 1px solid #F1F5F9; color: #64748B; font-size: 14px; }
+        /* WhatsApp Floating Button */
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; padding: 14px 22px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 2000; display: flex; align-items: center; gap: 8px; font-size: 14px; }
+
+        footer { padding: 40px 6%; text-align: center; border-top: 1px solid #F1F5F9; color: #64748B; font-size: 14px; margin-top: 60px; }
     </style>
 </head>
 <body>
 
+    <!-- Header & Multi-Page Navigation Bar -->
     <header>
-        <img src="logo.png" alt="EquipNext Logo" class="logo-img">
+        <img src="logo.png" alt="EquipNext Logo" class="logo-img" onclick="switchPage('home')">
         <nav>
-            <a href="#tracks">Tracks</a>
-            <a href="#why">Why Us</a>
-            <a href="#apply" class="nav-btn">Apply Now</a>
+            <a onclick="switchPage('home')" id="link-home" class="active">Home</a>
+            <a onclick="switchPage('courses')" id="link-courses">Courses & Tracks</a>
+            <a onclick="switchPage('about')" id="link-about">Why EquipNext</a>
+            <a onclick="switchPage('contact')" id="link-contact">Contact</a>
+            <a onclick="switchPage('courses')" class="nav-btn">Enroll Now</a>
         </nav>
     </header>
 
-    <section class="hero">
-        <span class="tag">August 2026 Cohort • Kerala Hub</span>
-        <h1>Step Out of Tutorials. <span>Master High-Income Career Skills.</span></h1>
-        <p>An elite anti-tutorial creative studio and performance marketing incubator. Learn by managing real ad budgets, executing advanced digital workflows, and building production portfolios.</p>
-    </section>
+    <!-- PAGE 1: HOME -->
+    <div id="page-home" class="page active">
+        <section class="hero">
+            <h1>Step Out of Ordinary Tutorials. <span>Master High-Income Tech & Marketing.</span></h1>
+            <p>An elite creative studio and professional career incubator. Learn by building production-ready web apps, executing real performance marketing campaigns, and working alongside top industry mentors.</p>
+            <button class="nav-btn" style="padding: 16px 32px; font-size: 16px; border: none; cursor: pointer;" onclick="switchPage('courses')">Explore All Courses & Curriculum</button>
+        </section>
 
-    <!-- Category Filter Tabs -->
-    <div class="tabs-container">
-        <button class="tab-btn active" onclick="filterTracks('all')">🔥 All Tracks</button>
-        <button class="tab-btn" onclick="filterTracks('marketing')">📈 Performance Marketing</button>
-        <button class="tab-btn" onclick="filterTracks('creative')">🎨 Creative & Tech</button>
+        <div style="max-width: 1100px; margin: 60px auto;">
+            <h2 style="font-size: 2rem; font-weight: 900; text-align: center; margin-bottom: 40px;">Flagship Career Disciplines</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <div>
+                        <div class="card-icon">💻</div>
+                        <h3>Full Stack Web Development</h3>
+                        <p>Build robust modern web applications from frontend interfaces to backend database architecture.</p>
+                        <ul>
+                            <li>HTML5, CSS3, Modern JavaScript (ES6+)</li>
+                            <li>React.js & Frontend UI Engineering</li>
+                            <li>Node.js, Express & REST APIs</li>
+                            <li>MongoDB & SQL Database Design</li>
+                        </ul>
+                    </div>
+                    <button class="btn-card" onclick="switchPage('courses')">View Full Syllabus</button>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="card-icon">📈</div>
+                        <h3>Performance Marketing & Growth</h3>
+                        <p>Master digital demand generation, ad funnel optimization, and global brand scaling.</p>
+                        <ul>
+                            <li>Meta Ads Manager & Advanced Google Ads</li>
+                            <li>Funnel Architecture & CRO</li>
+                            <li>GA4 Analytics & Looker Studio</li>
+                            <li>Real Budget Campaign Testing</li>
+                        </ul>
+                    </div>
+                    <button class="btn-card" onclick="switchPage('courses')">View Full Syllabus</button>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="card-icon">📊</div>
+                        <h3>Data Science & Analytics</h3>
+                        <p>Transform raw data into strategic business intelligence using modern tools and models.</p>
+                        <ul>
+                            <li>Python Programming & Pandas</li>
+                            <li>SQL & Advanced Data Queries</li>
+                            <li>Tableau & PowerBI Visualization</li>
+                            <li>Applied Machine Learning Models</li>
+                        </ul>
+                    </div>
+                    <button class="btn-card" onclick="switchPage('courses')">View Full Syllabus</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Tracks Section -->
-    <div id="tracks" class="section-container">
-        <h2 class="section-title">Explore Our Specialized Tracks</h2>
-        <p class="section-desc">Designed precisely around agency standards and high-income execution.</p>
-        
-        <div class="grid-2" id="trackGrid">
-            <div class="card" data-category="marketing">
-                <div class="card-icon">📈</div>
-                <h3>Performance Marketing & Growth</h3>
-                <p>Master digital demand generation, paid media systems, and data-driven scaling.</p>
-                <ul>
-                    <li>Meta Ads Manager & Advanced Google Ads</li>
-                    <li>Funnel Architecture & Conversion Optimization</li>
-                    <li>GA4 Analytics & Looker Studio Dashboards</li>
-                    <li>Real Budget Campaign Testing & Scaling</li>
-                </ul>
+    <!-- PAGE 2: COURSES & CATALOG -->
+    <div id="page-courses" class="page">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            <h2 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 10px; text-align: center;">Comprehensive Course Catalog</h2>
+            <p style="color: #475569; text-align: center; margin-bottom: 50px;">Industry-aligned programs engineered for high-income career placement.</p>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div>
+                        <div class="card-icon">🌐</div>
+                        <h3>Front-End Developer</h3>
+                        <p>Master responsive web interfaces, UI components, and modern JavaScript frameworks.</p>
+                        <ul>
+                            <li>HTML, CSS, Tailwind CSS</li>
+                            <li>JavaScript & DOM Manipulation</li>
+                            <li>React.js & State Management</li>
+                            <li>Git, GitHub & Deployment</li>
+                        </ul>
+                    </div>
+                    <button class="btn-card" onclick="selectCourseAndEnroll('Front-End Developer')">Enroll via WhatsApp</button>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="card-icon">⚙️</div>
+                        <h3>Back-End Developer</h3>
+                        <p>Build secure server architectures, database structures, and high-performance APIs.</p>
+                        <ul>
+                            <li>Node.js & Express Framework</li>
+                            <li>RESTful API Development & Auth</li>
+                            <li>MongoDB, PostgreSQL & ORMs</li>
+                            <li>Server Security & Cloud Hosting</li>
+                        </ul>
+                    </div>
+                    <button class="btn-card" onclick="selectCourseAndEnroll('Back-End Developer')">Enroll via WhatsApp</button>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="card-icon">🚀</div>
+                        <h3>Full Stack Developer</h3>
+                        <p>The complete end-to-end engineering track for high-paying software developer roles.</p>
+                        <ul>
+                            <li>Complete Front-End Mastery</li>
+                            <li>Complete Back-End Mastery</li>
+                            <li>Full-Stack Capstone Projects</li>
+                            <li>Placement & Resume Training</li>
+                        </ul>
+                    </div>
+                    <button class="btn-card" onclick="selectCourseAndEnroll('Full Stack Developer')">Enroll via WhatsApp</button>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="card-icon">📈</div>
+                        <h3>Performance Marketing</h3>
+                        <p>Scale digital businesses with paid media buying, tracking, and conversion funnels.</p>
+                        <ul>
+                            <li>Meta Ads, TikTok & Google Ads</li>
+                            <li>Conversion Rate Optimization</li>
+                            <li>Data Analytics & UTM Tracking</li>
+                            <li>Live Agency Campaign Execution</li>
+                        </ul>
+                    </div>
+                    <button class="btn-card" onclick="selectCourseAndEnroll('Performance Marketing')">Enroll via WhatsApp</button>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="card-icon">📊</div>
+                        <h3>Data Analytics & Science</h3>
+                        <p>Unlock insights from complex datasets and drive data-backed company decisions.</p>
+                        <ul>
+                            <li>Python & SQL for Data Science</li>
+                            <li>Advanced Excel & Dashboarding</li>
+                            <li>Tableau & PowerBI Reporting</li>
+                            <li>Predictive Modeling Basics</li>
+                        </ul>
+                    </div>
+                    <button class="btn-card" onclick="selectCourseAndEnroll('Data Analytics & Science')">Enroll via WhatsApp</button>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="card-icon">🎨</div>
+                        <h3>Creative Design & Tech</h3>
+                        <p>Craft high-fashion visual assets, UI/UX layouts, and cinematic video edits.</p>
+                        <ul>
+                            <li>Figma UI/UX Design Principles</li>
+                            <li>DaVinci Resolve Video Editing</li>
+                            <li>Adobe Photoshop & Branding</li>
+                            <li>AI Creative Workflows</li>
+                        </ul>
+                    </div>
+                    <button class="btn-card" onclick="selectCourseAndEnroll('Creative Design & Tech')">Enroll via WhatsApp</button>
+                </div>
             </div>
+        </div>
+    </div>
+
+    <!-- PAGE 3: ABOUT / WHY US -->
+    <div id="page-about" class="page">
+        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+            <h2 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 20px;">The "Anti-Coaching" Philosophy</h2>
+            <p style="color: #475569; font-size: 1.1rem; margin-bottom: 40px;">Traditional educational centers rely on outdated textbooks and memorization. At EquipNext, we treat education like an elite creative studio and tech incubator.</p>
             
-            <div class="card" data-category="creative">
-                <div class="card-icon">🎨</div>
-                <h3>Creative Design & Modern Tech</h3>
-                <p>Build high-fashion visual brand assets and modern digital workflows.</p>
-                <ul>
-                    <li>UI/UX Design Principles & Figma Wireframing</li>
-                    <li>Advanced Video Editing (DaVinci Resolve & Photoshop)</li>
-                    <li>AI-Assisted Workflow Integration</li>
-                    <li>High-Conversion Landing Page Development</li>
-                </ul>
+            <div class="grid-3" style="text-align: left;">
+                <div class="card">
+                    <h3>Real Projects</h3>
+                    <p>Students don't just watch videos; they build production applications, manage real marketing budgets, and ship client-ready solutions.</p>
+                </div>
+                <div class="card">
+                    <h3>Industry Mentors</h3>
+                    <p>Learn directly from active practitioners operating in high-growth markets like Dubai, Bangalore, and Kerala.</p>
+                </div>
+                <div class="card">
+                    <h3>Career Support</h3>
+                    <p>Rigorous portfolio reviews, mock technical interviews, and direct placement pipelines into digital agencies and tech startups.</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Why Us / Features Section -->
-    <div id="why" class="section-container">
-        <h2 class="section-title">The "Anti-Coaching" Advantage</h2>
-        <p class="section-desc">Why ambitious students choose EquipNext over traditional classrooms.</p>
-        
-        <div class="grid-2">
-            <div class="card">
-                <div class="card-icon">⚡</div>
-                <h3>100% Practical Execution</h3>
-                <p>No boring theoretical lectures. You spend your hours building live ad accounts, editing production videos, and shipping live websites.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">🤝</div>
-                <h3>Direct Agency Mentorship</h3>
-                <p>Learn directly from active practitioners working in top-tier markets like Dubai and Kerala, ensuring your skills match current industry demands.</p>
+    <!-- PAGE 4: CONTACT & ADMISSIONS FORM -->
+    <div id="page-contact" class="page">
+        <div style="max-width: 700px; margin: 0 auto;">
+            <h2 style="font-size: 2.5rem; font-weight: 900; text-align: center; margin-bottom: 10px;">Admissions & Instant Contact</h2>
+            <p style="color: #475569; text-align: center; margin-bottom: 30px;">Have questions about our curriculum or fee structure? Fill out the form below to connect instantly with our team on WhatsApp.</p>
+
+            <div class="form-box">
+                <form id="leadForm">
+                    <label>Your Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+
+                    <label>Your WhatsApp Number</label>
+                    <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" required>
+
+                    <label>Select Course of Interest</label>
+                    <select id="course">
+                        <option value="Full Stack Web Development">Full Stack Web Development</option>
+                        <option value="Front-End Developer">Front-End Developer</option>
+                        <option value="Back-End Developer">Back-End Developer</option>
+                        <option value="Performance Marketing">Performance Marketing</option>
+                        <option value="Data Analytics & Science">Data Analytics & Science</option>
+                        <option value="Creative Design & Tech">Creative Design & Tech</option>
+                    </select>
+
+                    <label>Your Message or Query</label>
+                    <textarea id="message" rows="3" placeholder="Ask anything about timing, fees, or syllabus..."></textarea>
+
+                    <button type="submit">Send Inquiry to WhatsApp</button>
+                </form>
             </div>
         </div>
     </div>
 
-    <!-- Application Form Section -->
-    <section id="apply" class="form-section">
-        <h2 style="font-size: 2.5rem; font-weight: 900; letter-spacing: -1px;">Secure Your Spot in the Studio</h2>
-        <p style="color: #94A3B8; max-width: 600px; margin: 10px auto 0;">Fill out your details below to instantly connect with our team on WhatsApp and receive the complete course curriculum.</p>
-        
-        <div class="form-wrapper">
-            <form id="leadForm">
-                <label>Your Full Name</label>
-                <input type="text" id="name" placeholder="Enter your name" required>
-                
-                <label>Select Your Focus Track</label>
-                <select id="course">
-                    <option value="Performance Marketing">Performance Marketing & Growth</option>
-                    <option value="Creative Design & Tech">Creative Design & Modern Tech</option>
-                    <option value="Both Dual Track">Both Tracks (Complete Mastery)</option>
-                </select>
-                
-                <button type="submit">Submit & Open WhatsApp</button>
-            </form>
-        </div>
-    </section>
-
-    <a href="https://wa.me/917306680158?text=Hi,%20I%20want%20to%20know%20more%20about%20EquipNext%20programs." class="whatsapp-float">
-        💬 WhatsApp Us
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/917306680158?text=Hi,%20I%20want%20to%20know%20more%20about%20EquipNext%20courses." class="whatsapp-float" target="_blank">
+        💬 Chat on WhatsApp
     </a>
 
     <footer>
-        <p>EquipNext (EQ) • Operational Hub in Kerala, India • Built for the Creative Future.</p>
+        <p>EquipNext (EQ) • Professional Tech & Marketing Studio • Built for High-Income Careers.</p>
     </footer>
 
+    <!-- Multi-Page Router Script -->
     <script>
-        function filterTracks(category) {
-            const cards = document.querySelectorAll('.card[data-category]');
-            const buttons = document.querySelectorAll('.tab-btn');
-            
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+        function switchPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(p => p.classList.remove('active'));
 
-            cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+            // Show target page
+            document.getElementById('page-' + pageId).classList.add('active');
+
+            // Update nav active states
+            const links = document.querySelectorAll('nav a');
+            links.forEach(l => l.classList.remove('active'));
+            const activeLink = document.getElementById('link-' + pageId);
+            if(activeLink) activeLink.classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function selectCourseAndEnroll(courseName) {
+            switchPage('contact');
+            document.getElementById('course').value = courseName;
+            document.getElementById('message').value = `Hi, I am interested in enrolling for the ${courseName} course. Please share the complete syllabus and fee details.`;
         }
 
         document.getElementById('leadForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
             const course = document.getElementById('course').value;
-            const msg = `Hi, I am ${name}. I want to apply for the ${course} program at EquipNext. Please share details.`;
+            const userMsg = document.getElementById('message').value;
+
+            const msg = `Hi, my name is ${name} (Phone: ${phone}). I am interested in ${course}. Message: ${userMsg}`;
             window.open(`https://wa.me/917306680158?text=${encodeURIComponent(msg)}`, '_blank');
         });
     </script>
