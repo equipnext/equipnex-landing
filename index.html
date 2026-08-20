@@ -102,5 +102,62 @@
 
     <a href="https://wa.me/917306680158?text=Hi,%20I%20want%20to%20know%20more%20about%20EquipNext%20courses." class="whatsapp-float" target="_blank">💬 WhatsApp</a>
     <footer><p>EquipNext (EQ) • Professional Tech & Marketing Studio • Built for High-Income Careers.</p></footer>
+
+    <!-- EquipNext AI Assistant Widget -->
+    <div id="ai-assistant-widget" style="position: fixed; bottom: 80px; right: 15px; z-index: 2000;">
+        <div id="ai-chat-box" style="display: none; width: 300px; background: #FFF; border: 1px solid #CBD5E1; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); overflow: hidden; margin-bottom: 10px;">
+            <div style="background: var(--purple); color: #fff; padding: 12px; font-weight: bold; font-size: 14px; display: flex; justify-content: space-between; align-items: center;">
+                <span>🤖 EQ AI Assistant</span>
+                <span style="cursor: pointer; font-size: 16px;" onclick="toggleAIChat()">✕</span>
+            </div>
+            <div id="ai-chat-messages" style="height: 200px; padding: 12px; overflow-y: auto; font-size: 12px; color: #334155; display: flex; flex-direction: column; gap: 8px;">
+                <div style="background: #F1F5F9; padding: 8px 12px; border-radius: 8px; align-self: flex-start;">Hi! I'm your AI guide. Ask me anything about our Full Stack, Marketing, or Data courses!</div>
+            </div>
+            <div style="padding: 8px; border-top: 1px solid #F1F5F9; display: flex; gap: 6px;">
+                <input type="text" id="ai-input" placeholder="Type a question..." style="flex: 1; padding: 8px; font-size: 12px; border: 1px solid #CBD5E1; border-radius: 6px; margin: 0;">
+                <button onclick="sendAIQuery()" style="padding: 8px 12px; background: var(--purple); color: #fff; border: none; border-radius: 6px; font-size: 12px; cursor: pointer;">Send</button>
+            </div>
+        </div>
+        <button onclick="toggleAIChat()" style="background: var(--purple); color: white; border: none; padding: 10px 16px; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.2); cursor: pointer; font-size: 13px; display: flex; align-items: center; gap: 6px;">
+            ✨ Ask AI Assistant
+        </button>
+    </div>
+
+    <script>
+        function toggleAIChat() {
+            const box = document.getElementById('ai-chat-box');
+            box.style.display = box.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function sendAIQuery() {
+            const input = document.getElementById('ai-input');
+            const query = input.value.trim();
+            if(!query) return;
+
+            const chatMessages = document.getElementById('ai-chat-messages');
+            
+            // Append user message
+            chatMessages.innerHTML += `<div style="background: #E2E8F0; padding: 8px 12px; border-radius: 8px; align-self: flex-end;">${query}</div>`;
+            input.value = '';
+
+            // Simulate intelligent AI response based on keywords
+            setTimeout(() => {
+                let reply = "That's a great question! For detailed fee structures and direct enrollment, let's connect on WhatsApp.";
+                const qLower = query.toLowerCase();
+                
+                if(qLower.includes('fee') || qLower.includes('price') || qLower.includes('cost')) {
+                    reply = "Our high-income program fees vary by track. Would you like me to open WhatsApp to chat with our team about pricing?";
+                } else if(qLower.includes('duration') || qLower.includes('months')) {
+                    reply = "Most cohorts run for 3 to 6 months with hands-on live project execution.";
+                } else if(qLower.includes('coding') || qLower.includes('python') || qLower.includes('web')) {
+                    reply = "We offer Full Stack, Front-End, Back-End, and Data Science tracks with real project training!";
+                }
+
+                chatMessages.innerHTML += `<div style="background: #F1F5F9; padding: 8px 12px; border-radius: 8px; align-self: flex-start;">${reply} <br><a href='https://wa.me/917306680158?text=${encodeURIComponent("Hi, I asked your AI assistant: " + query)}' target='_blank' style='color: var(--purple); font-weight: bold;'>Chat on WhatsApp →</a></div>`;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 500);
+        }
+    </script>
+
 </body>
 </html>
