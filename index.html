@@ -3,61 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EquipNext | Creative Studio & Performance Hub</title>
-    <!-- Favicon -->
+    <title>EquipNext | Modern Creative & Performance Studio</title>
     <link rel="icon" type="image/png" href="logo.png">
     <style>
-        :root { --terracotta: #D97706; --purple: #7C3AED; --bg: #FFFFFF; --dark: #0F172A; }
-        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--dark); margin: 0; padding-bottom: 80px; }
-        header { padding: 25px 5%; display: flex; align-items: center; border-bottom: 1px solid #F1F5F9; }
-        .logo-img { height: 75px; width: auto; object-fit: contain; }
-        .hero { padding: 60px 5%; text-align: center; }
-        h1 { font-size: 2.8rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 20px; line-height: 1.1; }
-        h1 span { color: var(--purple); }
-        .hero p { color: #475569; font-size: 1.1rem; max-width: 600px; margin: 0 auto 40px; }
-        .form-container { max-width: 420px; margin: 40px auto; padding: 35px; border: 2px solid var(--dark); border-radius: 24px; background: #FAFAF9; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
-        input, select { width: 100%; padding: 14px; margin: 8px 0 16px 0; border: 1px solid #CBD5E1; border-radius: 10px; font-size: 15px; background: #FFF; }
-        button { width: 100%; padding: 16px; background: var(--purple); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 16px; transition: background 0.2s; }
-        button:hover { background: #6D28D9; }
-        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 100; display: flex; align-items: center; gap: 8px; }
+        :root { --terracotta: #D97706; --purple: #7C3AED; --bg: #FFFFFF; --dark: #0F172A; --card-bg: #FAFAF9; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--dark); line-height: 1.6; }
+        
+        header { padding: 25px 6%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #F1F5F9; position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 10; }
+        .logo-img { height: 65px; width: auto; object-fit: contain; }
+        .nav-cta { background: var(--dark); color: #fff; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 14px; }
+
+        .hero { max-width: 1000px; margin: 60px auto 40px; padding: 0 20px; text-align: center; }
+        .tag { display: inline-block; background: #FEF3C7; color: var(--terracotta); padding: 6px 14px; border-radius: 30px; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+        h1 { font-size: clamp(36px, 5vw, 60px); font-weight: 900; letter-spacing: -2px; margin-bottom: 20px; line-height: 1.1; }
+        h1 span { background: linear-gradient(135deg, var(--terracotta), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { color: #475569; font-size: 1.15rem; max-width: 700px; margin: 0 auto 40px; }
+
+        /* Content Sections */
+        .section-container { max-width: 1100px; margin: 80px auto; padding: 0 20px; }
+        .section-title { font-size: 2rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 12px; }
+        .section-desc { color: #475569; margin-bottom: 40px; font-size: 1.05rem; }
+
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .card { background: var(--card-bg); border: 1px solid #E2E8F0; padding: 40px; border-radius: 24px; transition: border-color 0.2s; }
+        .card:hover { border-color: var(--purple); }
+        .card h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 15px; color: var(--dark); }
+        .card p { color: #475569; font-size: 0.95rem; margin-bottom: 20px; }
+        .card ul { list-style: none; }
+        .card ul li { font-size: 14px; font-weight: 600; color: #1E293B; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .card ul li::before { content: "•"; color: var(--terracotta); font-size: 20px; }
+
+        /* Form Section */
+        .form-section { background: var(--dark); color: #fff; padding: 80px 20px; text-align: center; margin-top: 80px; }
+        .form-wrapper { max-width: 500px; margin: 40px auto 0; background: #1E293B; padding: 40px; border-radius: 24px; text-align: left; border: 1px solid #334155; }
+        .form-wrapper label { font-size: 13px; font-weight: 700; color: #94A3B8; display: block; margin-bottom: 6px; }
+        .form-wrapper input, .form-wrapper select { width: 100%; padding: 14px; margin-bottom: 20px; background: #0F172A; border: 1px solid #475569; border-radius: 10px; color: #fff; font-size: 15px; }
+        .form-wrapper button { width: 100%; padding: 16px; background: var(--purple); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 16px; transition: background 0.2s; }
+        .form-wrapper button:hover { background: #6D28D9; }
+
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; padding: 14px 24px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 100; display: flex; align-items: center; gap: 8px; font-size: 14px; }
+        
+        footer { padding: 40px 20px; text-align: center; border-top: 1px solid #F1F5F9; color: #64748B; font-size: 14px; }
     </style>
 </head>
 <body>
+
     <header>
         <img src="logo.png" alt="EquipNext Logo" class="logo-img">
+        <a href="#apply" class="nav-cta">Enroll Now</a>
     </header>
-    
+
     <section class="hero">
-        <h1>High-Income <span>Creative Mastery</span></h1>
-        <p>Your studio for Meta Ads, UI/UX, and Modern Tech workflows.</p>
+        <span class="tag">August 2026 Cohort • Kerala Hub</span>
+        <h1>Step Out of Tutorials. <span>Master High-Income Career Skills.</span></h1>
+        <p>An elite anti-tutorial creative studio and performance marketing incubator. Learn by managing real ad budgets, executing advanced digital workflows, and building production portfolios.</p>
+    </section>
+
+    <!-- Detailed Pillars Section (Matching Industry Content Depth) -->
+    <div class="section-container">
+        <h2 class="section-title">The High-Income Tracks</h2>
+        <p class="section-desc">Structured learning models built precisely around how modern agencies and digital startups operate.</p>
         
-        <div class="form-container">
-            <h3 style="margin-bottom: 15px; font-size: 1.3rem;">Join Next Cohort</h3>
+        <div class="grid-2">
+            <div class="card">
+                <h3>Performance Marketing & Growth</h3>
+                <p>Master digital demand generation, paid media systems, and data-driven scaling.</p>
+                <ul>
+                    <li>Meta Ads Manager & Advanced Google Ads</li>
+                    <li>Funnel Architecture & Conversion Rate Optimization (CRO)</li>
+                    <li>GA4 Analytics, Looker Studio Dashboards & UTM Tracking</li>
+                    <li>Real Budget Campaign Testing & Scaling Strategies</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>Creative Design & Modern Tech</h3>
+                <p>Build high-fashion visual brand assets and modern digital workflows.</p>
+                <ul>
+                    <li>UI/UX Design Principles & Figma Wireframing</li>
+                    <li>Advanced Video Editing (DaVinci Resolve & Photoshop)</li>
+                    <li>AI-Assisted Workflow Integration & Content Production</li>
+                    <li>Landing Page Development & Copywriting That Converts</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Form Section -->
+    <section id="apply" class="form-section">
+        <h2 style="font-size: 2.5rem; font-weight: 900; letter-spacing: -1px;">Secure Your Spot in the Studio</h2>
+        <p style="color: #94A3B8; max-width: 600px; margin: 10px auto 0;">Fill out your details below to instantly connect with our team on WhatsApp and receive the complete August 2026 course guide.</p>
+        
+        <div class="form-wrapper">
             <form id="leadForm">
-                <label style="font-size: 13px; font-weight: 700; color: #334155;">Full Name</label>
+                <label>Your Full Name</label>
                 <input type="text" id="name" placeholder="Enter your name" required>
                 
-                <label style="font-size: 13px; font-weight: 700; color: #334155;">Choose Course</label>
+                <label>Select Your Focus Track</label>
                 <select id="course">
-                    <option value="Performance Marketing">Performance Marketing</option>
-                    <option value="Creative Design & Tech">Creative Design & Tech</option>
+                    <option value="Performance Marketing">Performance Marketing & Growth</option>
+                    <option value="Creative Design & Tech">Creative Design & Modern Tech</option>
+                    <option value="Both Dual Track">Both Tracks (Complete Mastery)</option>
                 </select>
                 
-                <button type="submit">Send to WhatsApp</button>
+                <button type="submit">Submit & Open WhatsApp</button>
             </form>
         </div>
     </section>
 
-    <a href="https://wa.me/917306680158?text=Hi,%20I%20want%20to%20know%20more%20about%20EquipNext." class="whatsapp-float">
-        💬 Chat on WhatsApp
+    <a href="https://wa.me/917306680158?text=Hi,%20I%20want%20to%20know%20more%20about%20EquipNext%20programs." class="whatsapp-float">
+        💬 WhatsApp Us
     </a>
+
+    <footer>
+        <p>EquipNext (EQ) • Operational Hub in Kerala, India • Built for the Creative Future.</p>
+    </footer>
 
     <script>
         document.getElementById('leadForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
             const course = document.getElementById('course').value;
-            const msg = `Hi, I am ${name}. I want to join the ${course} course at EquipNext.`;
+            const msg = `Hi, I am ${name}. I want to apply for the ${course} program at EquipNext. Please share details.`;
             window.open(`https://wa.me/917306680158?text=${encodeURIComponent(msg)}`, '_blank');
         });
     </script>
