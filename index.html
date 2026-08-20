@@ -102,20 +102,19 @@
 
     <a href="https://wa.me/917306680158?text=Hi,%20I%20want%20to%20know%20more%20about%20EquipNext%20courses." class="whatsapp-float" target="_blank">💬 WhatsApp</a>
     <footer><p>EquipNext (EQ) • Professional Tech & Marketing Studio • Built for High-Income Careers.</p></footer>
-
     <!-- EquipNext AI Assistant Widget -->
     <div id="ai-assistant-widget" style="position: fixed; bottom: 80px; right: 15px; z-index: 2000;">
-        <div id="ai-chat-box" style="display: none; width: 300px; background: #FFF; border: 1px solid #CBD5E1; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); overflow: hidden; margin-bottom: 10px;">
+        <div id="ai-chat-box" style="display: none; width: 310px; background: #FFF; border: 1px solid #CBD5E1; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); overflow: hidden; margin-bottom: 10px;">
             <div style="background: var(--purple); color: #fff; padding: 12px; font-weight: bold; font-size: 14px; display: flex; justify-content: space-between; align-items: center;">
                 <span>🤖 EQ AI Assistant</span>
                 <span style="cursor: pointer; font-size: 16px;" onclick="toggleAIChat()">✕</span>
             </div>
-            <div id="ai-chat-messages" style="height: 200px; padding: 12px; overflow-y: auto; font-size: 12px; color: #334155; display: flex; flex-direction: column; gap: 8px;">
-                <div style="background: #F1F5F9; padding: 8px 12px; border-radius: 8px; align-self: flex-start;">Hi! I'm your AI guide. Ask me anything about our Full Stack, Marketing, or Data courses!</div>
+            <div id="ai-chat-messages" style="height: 220px; padding: 12px; overflow-y: auto; font-size: 12px; color: #334155; display: flex; flex-direction: column; gap: 8px;">
+                <div style="background: #F1F5F9; padding: 8px 12px; border-radius: 8px; align-self: flex-start;">Hello! I'm your AI guide at EquipNext. Ask me anything about our tech programs, marketing tracks, or fees!</div>
             </div>
             <div style="padding: 8px; border-top: 1px solid #F1F5F9; display: flex; gap: 6px;">
-                <input type="text" id="ai-input" placeholder="Type a question..." style="flex: 1; padding: 8px; font-size: 12px; border: 1px solid #CBD5E1; border-radius: 6px; margin: 0;">
-                <button onclick="sendAIQuery()" style="padding: 8px 12px; background: var(--purple); color: #fff; border: none; border-radius: 6px; font-size: 12px; cursor: pointer;">Send</button>
+                <input type="text" id="ai-input" placeholder="Type your question here..." style="flex: 1; padding: 8px; font-size: 12px; border: 1px solid #CBD5E1; border-radius: 6px; margin: 0;" onkeypress="if(event.key === 'Enter') sendAIQuery()">
+                <button onclick="sendAIQuery()" style="padding: 8px 12px; background: var(--purple); color: #fff; border: none; border-radius: 6px; font-size: 12px; cursor: pointer; font-weight: bold;">Send</button>
             </div>
         </div>
         <button onclick="toggleAIChat()" style="background: var(--purple); color: white; border: none; padding: 10px 16px; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.2); cursor: pointer; font-size: 13px; display: flex; align-items: center; gap: 6px;">
@@ -136,28 +135,41 @@
 
             const chatMessages = document.getElementById('ai-chat-messages');
             
-            // Append user message
-            chatMessages.innerHTML += `<div style="background: #E2E8F0; padding: 8px 12px; border-radius: 8px; align-self: flex-end;">${query}</div>`;
+            // Show user message
+            chatMessages.innerHTML += `<div style="background: #E2E8F0; padding: 8px 12px; border-radius: 8px; align-self: flex-end; max-width: 80%; word-break: break-word;">${query}</div>`;
             input.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
 
-            // Simulate intelligent AI response based on keywords
+            // Generate dynamic intelligent response based on what the user actually typed
             setTimeout(() => {
-                let reply = "That's a great question! For detailed fee structures and direct enrollment, let's connect on WhatsApp.";
-                const qLower = query.toLowerCase();
+                let reply = `That's a brilliant question about "${query}". To get precise details tailored for you, let's continue this conversation directly with our mentors on WhatsApp!`;
                 
-                if(qLower.includes('fee') || qLower.includes('price') || qLower.includes('cost')) {
-                    reply = "Our high-income program fees vary by track. Would you like me to open WhatsApp to chat with our team about pricing?";
-                } else if(qLower.includes('duration') || qLower.includes('months')) {
-                    reply = "Most cohorts run for 3 to 6 months with hands-on live project execution.";
-                } else if(qLower.includes('coding') || qLower.includes('python') || qLower.includes('web')) {
-                    reply = "We offer Full Stack, Front-End, Back-End, and Data Science tracks with real project training!";
+                const q = query.toLowerCase();
+                if(q.includes('fee') || q.includes('price') || q.includes('cost') || q.includes('rupees') || q.includes('rs')) {
+                    reply = `Regarding pricing and scholarship options for "${query}", our mentors can share the exact fee breakdown on WhatsApp.`;
+                } else if(q.includes('duration') || q.includes('long') || q.includes('time') || q.includes('months')) {
+                    reply = `Our programs are designed for intensive, hands-on mastery ranging from 3 to 6 months. Let's discuss schedule flexibility on WhatsApp!`;
+                } else if(q.includes('python') || q.includes('coding') || q.includes('full stack') || q.includes('frontend') || q.includes('backend') || q.includes('developer')) {
+                    reply = `Our coding and engineering tracks cover live project building from scratch. Let's send your query to our tech leads on WhatsApp!`;
+                } else if(q.includes('marketing') || q.includes('ads') || q.includes('meta') || q.includes('google ads')) {
+                    reply = `Our performance marketing track covers real budget testing and campaign scaling. Let's get you connected with our growth mentors!`;
                 }
 
-                chatMessages.innerHTML += `<div style="background: #F1F5F9; padding: 8px 12px; border-radius: 8px; align-self: flex-start;">${reply} <br><a href='https://wa.me/917306680158?text=${encodeURIComponent("Hi, I asked your AI assistant: " + query)}' target='_blank' style='color: var(--purple); font-weight: bold;'>Chat on WhatsApp →</a></div>`;
+                const waLink = `https://wa.me/917306680158?text=` + encodeURIComponent(`Hi! I was chatting with the EquipNext AI assistant on your website and asked: "${query}". Please give me more details.`);
+
+                chatMessages.innerHTML += `<div style="background: #F1F5F9; padding: 8px 12px; border-radius: 8px; align-self: flex-start; max-width: 85%;">
+                    ${reply}
+                    <div style="margin-top: 8px;">
+                        <a href="${waLink}" target="_blank" style="background: #25D366; color: #fff; padding: 6px 12px; border-radius: 6px; text-decoration: none; font-weight: bold; display: inline-block; font-size: 11px;">💬 Continue on WhatsApp →</a>
+                    </div>
+                </div>`;
                 chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 500);
+            }, 600);
         }
     </script>
+
+
+
 
 </body>
 </html>
