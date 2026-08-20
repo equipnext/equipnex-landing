@@ -9,322 +9,98 @@
         :root { --terracotta: #D97706; --purple: #7C3AED; --bg: #FFFFFF; --dark: #0F172A; --card-bg: #FAFAF9; }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
         body { background: var(--bg); color: var(--dark); line-height: 1.5; }
-        
-        /* Perfectly Aligned Sticky Header */
         header { padding: 12px 4%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #F1F5F9; position: sticky; top: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); z-index: 1000; }
         .logo-img { height: 42px; width: auto; object-fit: contain; cursor: pointer; }
         nav { display: flex; gap: 12px; align-items: center; }
         nav a { text-decoration: none; color: #475569; font-weight: 600; font-size: 13px; cursor: pointer; transition: color 0.2s; white-space: nowrap; }
         nav a:hover, nav a.active { color: var(--purple); }
         .nav-btn { background: var(--purple); color: #fff !important; padding: 8px 14px; border-radius: 6px; font-weight: 700; font-size: 13px; }
-
-        /* Pages System */
-        .page { display: none; padding: 25px 4%; min-height: 80vh; animation: fadeIn 0.3s ease-in-out; }
-        .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Hero Section */
-        .hero { max-width: 800px; margin: 20px auto; text-align: center; }
+        .hero { max-width: 800px; margin: 30px auto; text-align: center; padding: 0 4%; }
         .hero h1 { font-size: clamp(30px, 6vw, 48px); font-weight: 900; letter-spacing: -1.5px; margin-bottom: 14px; line-height: 1.1; }
         .hero h1 span { background: linear-gradient(135deg, var(--terracotta), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero p { color: #475569; font-size: 1rem; max-width: 650px; margin: 0 auto 25px; }
-
-        /* Grid & Cards (Balanced Spacing) */
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 25px; }
-        .card { background: var(--card-bg); border: 1px solid #E2E8F0; padding: 25px; border-radius: 16px; transition: border-color 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
-        .card:hover { border-color: var(--purple); }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 25px; max-width: 1100px; margin-left: auto; margin-right: auto; padding: 0 4%; }
+        .card { background: var(--card-bg); border: 1px solid #E2E8F0; padding: 25px; border-radius: 16px; display: flex; flex-direction: column; justify-content: space-between; }
         .card-icon { font-size: 28px; margin-bottom: 12px; display: inline-block; background: #FEF3C7; padding: 8px; border-radius: 10px; }
         .card h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 10px; color: var(--dark); }
         .card p { color: #475569; font-size: 0.9rem; margin-bottom: 15px; }
         .card ul { list-style: none; margin-bottom: 15px; }
         .card ul li { font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 5px; display: flex; align-items: center; gap: 6px; }
         .card ul li::before { content: "✓"; color: var(--purple); font-weight: bold; }
-        .btn-card { background: var(--dark); color: #fff; text-align: center; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 13px; transition: background 0.2s; cursor: pointer; border: none; width: 100%; }
-        .btn-card:hover { background: var(--purple); }
-
-        /* Form Container */
-        .form-box { max-width: 550px; margin: 10px auto; background: var(--card-bg); padding: 30px; border: 1px solid #E2E8F0; border-radius: 20px; }
-        .form-box label { font-size: 12px; font-weight: 700; color: #334155; display: block; margin-bottom: 4px; }
-        .form-box input, .form-box select, .form-box textarea { width: 100%; padding: 12px; margin-bottom: 15px; background: #FFF; border: 1px solid #CBD5E1; border-radius: 8px; font-size: 14px; }
-        .form-box button { width: 100%; padding: 14px; background: var(--purple); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 15px; }
-        .form-box button:hover { background: #6D28D9; }
-
-        /* WhatsApp Floating Button */
+        .btn-card { background: var(--dark); color: #fff; text-align: center; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 13px; display: block; border: none; width: 100%; cursor: pointer; }
         .whatsapp-float { position: fixed; bottom: 15px; right: 15px; background: #25D366; color: white; padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 2000; display: flex; align-items: center; gap: 6px; font-size: 13px; }
-
         footer { padding: 30px 4%; text-align: center; border-top: 1px solid #F1F5F9; color: #64748B; font-size: 13px; margin-top: 40px; }
     </style>
 </head>
 <body>
-
-    <!-- Header & Multi-Page Navigation Bar -->
     <header>
-        <img src="logo.png" alt="EquipNext Logo" class="logo-img" onclick="switchPage('home')">
+        <img src="logo.png" alt="EquipNext Logo" class="logo-img" onclick="location.href='index.html'">
         <nav>
-            <a onclick="switchPage('home')" id="link-home" class="active">Home</a>
-            <a onclick="switchPage('courses')" id="link-courses">Courses</a>
-            <a onclick="switchPage('about')" id="link-about">Why Us</a>
-            <a onclick="switchPage('contact')" id="link-contact">Contact</a>
-            <a onclick="switchPage('courses')" class="nav-btn">Enroll</a>
+            <a href="index.html" class="active">Home</a>
+            <a href="courses.html">Courses</a>
+            <a href="about.html">Why Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="courses.html" class="nav-btn">Enroll</a>
         </nav>
     </header>
 
-    <!-- PAGE 1: HOME -->
-    <div id="page-home" class="page active">
-        <section class="hero">
-            <h1>Step Out of Tutorials. <span>Master High-Income Tech & Marketing.</span></h1>
-            <p>An elite creative studio and professional career incubator. Learn by building production-ready web apps, executing real performance marketing campaigns, and working alongside top industry mentors.</p>
-            <button class="nav-btn" style="padding: 14px 28px; font-size: 15px; border: none; cursor: pointer;" onclick="switchPage('courses')">Explore All Courses & Curriculum</button>
-        </section>
+    <section class="hero">
+        <h1>Step Out of Tutorials. <span>Master High-Income Tech & Marketing.</span></h1>
+        <p>An elite creative studio and professional career incubator. Learn by building production-ready web apps, executing real performance marketing campaigns, and working alongside top industry mentors.</p>
+        <button class="nav-btn" style="padding: 14px 28px; font-size: 15px; border: none; cursor: pointer;" onclick="location.href='courses.html'">Explore All Courses & Curriculum</button>
+    </section>
 
-        <div style="max-width: 1100px; margin: 40px auto 0;">
-            <h2 style="font-size: 1.8rem; font-weight: 900; text-align: center; margin-bottom: 25px;">Flagship Career Disciplines</h2>
-            <div class="grid-3">
-                <div class="card">
-                    <div>
-                        <div class="card-icon">💻</div>
-                        <h3>Full Stack Web Development</h3>
-                        <p>Build robust modern web applications from frontend interfaces to backend database architecture.</p>
-                        <ul>
-                            <li>HTML5, CSS3, Modern JavaScript</li>
-                            <li>React.js & Frontend UI Engineering</li>
-                            <li>Node.js, Express & REST APIs</li>
-                            <li>MongoDB & SQL Database Design</li>
-                        </ul>
-                    </div>
-                    <button class="btn-card" onclick="switchPage('courses')">View Full Syllabus</button>
+    <div style="max-width: 1100px; margin: 40px auto 0; padding: 0 4%;">
+        <h2 style="font-size: 1.8rem; font-weight: 900; text-align: center; margin-bottom: 25px;">Flagship Career Disciplines</h2>
+        <div class="grid-3" style="padding: 0;">
+            <div class="card">
+                <div>
+                    <div class="card-icon">💻</div>
+                    <h3>Full Stack Web Development</h3>
+                    <p>Build robust modern web applications from frontend interfaces to backend database architecture.</p>
+                    <ul>
+                        <li>HTML5, CSS3, Modern JavaScript</li>
+                        <li>React.js & Frontend UI Engineering</li>
+                        <li>Node.js, Express & REST APIs</li>
+                        <li>MongoDB & SQL Database Design</li>
+                    </ul>
                 </div>
+                <a href="courses.html" class="btn-card">View Full Syllabus</a>
+            </div>
 
-                <div class="card">
-                    <div>
-                        <div class="card-icon">📈</div>
-                        <h3>Performance Marketing & Growth</h3>
-                        <p>Master digital demand generation, ad funnel optimization, and global brand scaling.</p>
-                        <ul>
-                            <li>Meta Ads & Advanced Google Ads</li>
-                            <li>Funnel Architecture & CRO</li>
-                            <li>GA4 Analytics & Looker Studio</li>
-                            <li>Real Budget Campaign Testing</li>
-                        </ul>
-                    </div>
-                    <button class="btn-card" onclick="switchPage('courses')">View Full Syllabus</button>
+            <div class="card">
+                <div>
+                    <div class="card-icon">📈</div>
+                    <h3>Performance Marketing & Growth</h3>
+                    <p>Master digital demand generation, ad funnel optimization, and global brand scaling.</p>
+                    <ul>
+                        <li>Meta Ads & Advanced Google Ads</li>
+                        <li>Funnel Architecture & CRO</li>
+                        <li>GA4 Analytics & Looker Studio</li>
+                        <li>Real Budget Campaign Testing</li>
+                    </ul>
                 </div>
+                <a href="courses.html" class="btn-card">View Full Syllabus</a>
+            </div>
 
-                <div class="card">
-                    <div>
-                        <div class="card-icon">📊</div>
-                        <h3>Data Science & Analytics</h3>
-                        <p>Transform raw data into strategic business intelligence using modern tools and models.</p>
-                        <ul>
-                            <li>Python Programming & Pandas</li>
-                            <li>SQL & Advanced Data Queries</li>
-                            <li>Tableau & PowerBI Visualization</li>
-                            <li>Applied Machine Learning Models</li>
-                        </ul>
-                    </div>
-                    <button class="btn-card" onclick="switchPage('courses')">View Full Syllabus</button>
+            <div class="card">
+                <div>
+                    <div class="card-icon">📊</div>
+                    <h3>Data Science & Analytics</h3>
+                    <p>Transform raw data into strategic business intelligence using modern tools and models.</p>
+                    <ul>
+                        <li>Python Programming & Pandas</li>
+                        <li>SQL & Advanced Data Queries</li>
+                        <li>Tableau & PowerBI Visualization</li>
+                        <li>Applied Machine Learning Models</li>
+                    </ul>
                 </div>
+                <a href="courses.html" class="btn-card">View Full Syllabus</a>
             </div>
         </div>
     </div>
 
-    <!-- PAGE 2: COURSES & CATALOG -->
-    <div id="page-courses" class="page">
-        <div style="max-width: 1100px; margin: 0 auto;">
-            <h2 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 8px; text-align: center;">Comprehensive Course Catalog</h2>
-            <p style="color: #475569; text-align: center; margin-bottom: 30px; font-size: 0.95rem;">Industry-aligned programs engineered for high-income career placement.</p>
-
-            <div class="grid-3">
-                <div class="card">
-                    <div>
-                        <div class="card-icon">🌐</div>
-                        <h3>Front-End Developer</h3>
-                        <p>Master responsive web interfaces, UI components, and modern JavaScript frameworks.</p>
-                        <ul>
-                            <li>HTML, CSS, Tailwind CSS</li>
-                            <li>JavaScript & DOM Manipulation</li>
-                            <li>React.js & State Management</li>
-                            <li>Git, GitHub & Deployment</li>
-                        </ul>
-                    </div>
-                    <button class="btn-card" onclick="selectCourseAndEnroll('Front-End Developer')">Enroll via WhatsApp</button>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="card-icon">⚙️</div>
-                        <h3>Back-End Developer</h3>
-                        <p>Build secure server architectures, database structures, and high-performance APIs.</p>
-                        <ul>
-                            <li>Node.js & Express Framework</li>
-                            <li>RESTful API Development & Auth</li>
-                            <li>MongoDB, PostgreSQL & ORMs</li>
-                            <li>Server Security & Cloud Hosting</li>
-                        </ul>
-                    </div>
-                    <button class="btn-card" onclick="selectCourseAndEnroll('Back-End Developer')">Enroll via WhatsApp</button>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="card-icon">🚀</div>
-                        <h3>Full Stack Developer</h3>
-                        <p>The complete end-to-end engineering track for high-paying software developer roles.</p>
-                        <ul>
-                            <li>Complete Front-End Mastery</li>
-                            <li>Complete Back-End Mastery</li>
-                            <li>Full-Stack Capstone Projects</li>
-                            <li>Placement & Resume Training</li>
-                        </ul>
-                    </div>
-                    <button class="btn-card" onclick="selectCourseAndEnroll('Full Stack Developer')">Enroll via WhatsApp</button>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="card-icon">📈</div>
-                        <h3>Performance Marketing</h3>
-                        <p>Scale digital businesses with paid media buying, tracking, and conversion funnels.</p>
-                        <ul>
-                            <li>Meta Ads, TikTok & Google Ads</li>
-                            <li>Conversion Rate Optimization</li>
-                            <li>Data Analytics & UTM Tracking</li>
-                            <li>Live Agency Campaign Execution</li>
-                        </ul>
-                    </div>
-                    <button class="btn-card" onclick="selectCourseAndEnroll('Performance Marketing')">Enroll via WhatsApp</button>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="card-icon">📊</div>
-                        <h3>Data Analytics & Science</h3>
-                        <p>Unlock insights from complex datasets and drive data-backed company decisions.</p>
-                        <ul>
-                            <li>Python & SQL for Data Science</li>
-                            <li>Advanced Excel & Dashboarding</li>
-                            <li>Tableau & PowerBI Reporting</li>
-                            <li>Predictive Modeling Basics</li>
-                        </ul>
-                    </div>
-                    <button class="btn-card" onclick="selectCourseAndEnroll('Data Analytics & Science')">Enroll via WhatsApp</button>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="card-icon">🎨</div>
-                        <h3>Creative Design & Tech</h3>
-                        <p>Craft high-fashion visual assets, UI/UX layouts, and cinematic video edits.</p>
-                        <ul>
-                            <li>Figma UI/UX Design Principles</li>
-                            <li>DaVinci Resolve Video Editing</li>
-                            <li>Adobe Photoshop & Branding</li>
-                            <li>AI Creative Workflows</li>
-                        </ul>
-                    </div>
-                    <button class="btn-card" onclick="selectCourseAndEnroll('Creative Design & Tech')">Enroll via WhatsApp</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- PAGE 3: ABOUT / WHY US -->
-    <div id="page-about" class="page">
-        <div style="max-width: 850px; margin: 0 auto; text-align: center;">
-            <h2 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 15px;">The "Anti-Coaching" Philosophy</h2>
-            <p style="color: #475569; font-size: 1rem; margin-bottom: 30px;">Traditional educational centers rely on outdated textbooks and memorization. At EquipNext, we treat education like an elite creative studio and tech incubator.</p>
-            
-            <div class="grid-3" style="text-align: left;">
-                <div class="card">
-                    <h3>Real Projects</h3>
-                    <p>Students don't just watch videos; they build production applications, manage real marketing budgets, and ship client-ready solutions.</p>
-                </div>
-                <div class="card">
-                    <h3>Industry Mentors</h3>
-                    <p>Learn directly from active practitioners operating in high-growth markets like Dubai, Bangalore, and Kerala.</p>
-                </div>
-                <div class="card">
-                    <h3>Career Support</h3>
-                    <p>Rigorous portfolio reviews, mock technical interviews, and direct placement pipelines into digital agencies and tech startups.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- PAGE 4: CONTACT & ADMISSIONS FORM -->
-    <div id="page-contact" class="page">
-        <div style="max-width: 650px; margin: 0 auto;">
-            <h2 style="font-size: 2.2rem; font-weight: 900; text-align: center; margin-bottom: 8px;">Admissions & Instant Contact</h2>
-            <p style="color: #475569; text-align: center; margin-bottom: 25px; font-size: 0.95rem;">Have questions about our curriculum or fee structure? Fill out the form below to connect instantly with our team on WhatsApp.</p>
-
-            <div class="form-box">
-                <form id="leadForm">
-                    <label>Your Full Name</label>
-                    <input type="text" id="name" placeholder="Enter your name" required>
-
-                    <label>Your WhatsApp Number</label>
-                    <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" required>
-
-                    <label>Select Course of Interest</label>
-                    <select id="course">
-                        <option value="Full Stack Web Development">Full Stack Web Development</option>
-                        <option value="Front-End Developer">Front-End Developer</option>
-                        <option value="Back-End Developer">Back-End Developer</option>
-                        <option value="Performance Marketing">Performance Marketing</option>
-                        <option value="Data Analytics & Science">Data Analytics & Science</option>
-                        <option value="Creative Design & Tech">Creative Design & Tech</option>
-                    </select>
-
-                    <label>Your Message or Query</label>
-                    <textarea id="message" rows="3" placeholder="Ask anything about timing, fees, or syllabus..."></textarea>
-
-                    <button type="submit">Send Inquiry to WhatsApp</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/917306680158?text=Hi,%20I%20want%20to%20know%20more%20about%20EquipNext%20courses." class="whatsapp-float" target="_blank">
-        💬 WhatsApp
-    </a>
-
-    <footer>
-        <p>EquipNext (EQ) • Professional Tech & Marketing Studio • Built for High-Income Careers.</p>
-    </footer>
-
-    <!-- Multi-Page Router Script -->
-    <script>
-        function switchPage(pageId) {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(p => p.classList.remove('active'));
-
-            document.getElementById('page-' + pageId).classList.add('active');
-
-            const links = document.querySelectorAll('nav a');
-            links.forEach(l => l.classList.remove('active'));
-            const activeLink = document.getElementById('link-' + pageId);
-            if(activeLink) activeLink.classList.add('active');
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function selectCourseAndEnroll(courseName) {
-            switchPage('contact');
-            document.getElementById('course').value = courseName;
-            document.getElementById('message').value = `Hi, I am interested in enrolling for the ${courseName} course. Please share the complete syllabus and fee details.`;
-        }
-
-        document.getElementById('leadForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const course = document.getElementById('course').value;
-            const userMsg = document.getElementById('message').value;
-
-            const msg = `Hi, my name is ${name} (Phone: ${phone}). I am interested in ${course}. Message: ${userMsg}`;
-            window.open(`https://wa.me/917306680158?text=${encodeURIComponent(msg)}`, '_blank');
-        });
-    </script>
+    <a href="https://wa.me/917306680158?text=Hi,%20I%20want%20to%20know%20more%20about%20EquipNext%20courses." class="whatsapp-float" target="_blank">💬 WhatsApp</a>
+    <footer><p>EquipNext (EQ) • Professional Tech & Marketing Studio • Built for High-Income Careers.</p></footer>
 </body>
 </html>
