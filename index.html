@@ -7,32 +7,43 @@
     <link rel="icon" type="image/png" href="logo.png">
     <style>
         :root { --terracotta: #D97706; --purple: #7C3AED; --bg: #FFFFFF; --dark: #0F172A; --card-bg: #FAFAF9; }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
         body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--dark); line-height: 1.6; }
         
-        header { padding: 25px 6%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #F1F5F9; position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 10; }
-        .logo-img { height: 65px; width: auto; object-fit: contain; }
-        .nav-cta { background: var(--dark); color: #fff; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 14px; }
+        /* Sticky Functional Header */
+        header { padding: 20px 6%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #F1F5F9; position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 100; }
+        .logo-img { height: 55px; width: auto; object-fit: contain; }
+        nav { display: flex; gap: 20px; align-items: center; }
+        nav a { text-decoration: none; color: #475569; font-weight: 600; font-size: 14px; transition: color 0.2s; }
+        nav a:hover { color: var(--purple); }
+        .nav-btn { background: var(--purple); color: #fff !important; padding: 10px 20px; border-radius: 8px; font-weight: 700; }
 
+        /* Hero */
         .hero { max-width: 1000px; margin: 60px auto 40px; padding: 0 20px; text-align: center; }
         .tag { display: inline-block; background: #FEF3C7; color: var(--terracotta); padding: 6px 14px; border-radius: 30px; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
         h1 { font-size: clamp(36px, 5vw, 60px); font-weight: 900; letter-spacing: -2px; margin-bottom: 20px; line-height: 1.1; }
         h1 span { background: linear-gradient(135deg, var(--terracotta), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .hero p { color: #475569; font-size: 1.15rem; max-width: 700px; margin: 0 auto 40px; }
 
-        /* Content Sections */
-        .section-container { max-width: 1100px; margin: 80px auto; padding: 0 20px; }
-        .section-title { font-size: 2rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 12px; }
-        .section-desc { color: #475569; margin-bottom: 40px; font-size: 1.05rem; }
+        /* Interactive Category Tabs */
+        .tabs-container { max-width: 900px; margin: 40px auto; padding: 0 20px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        .tab-btn { background: #F1F5F9; border: 1px solid #CBD5E1; color: var(--dark); padding: 12px 24px; border-radius: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; font-size: 14px; }
+        .tab-btn.active, .tab-btn:hover { background: var(--dark); color: #fff; border-color: var(--dark); }
+
+        /* Sections */
+        .section-container { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
+        .section-title { font-size: 2.2rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 10px; text-align: center; }
+        .section-desc { color: #475569; text-align: center; margin-bottom: 40px; font-size: 1.05rem; }
 
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .card { background: var(--card-bg); border: 1px solid #E2E8F0; padding: 40px; border-radius: 24px; transition: border-color 0.2s; }
+        .card { background: var(--card-bg); border: 1px solid #E2E8F0; padding: 40px; border-radius: 24px; transition: border-color 0.2s; position: relative; }
         .card:hover { border-color: var(--purple); }
+        .card-icon { font-size: 36px; margin-bottom: 20px; display: inline-block; background: #FEF3C7; padding: 12px; border-radius: 16px; }
         .card h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 15px; color: var(--dark); }
         .card p { color: #475569; font-size: 0.95rem; margin-bottom: 20px; }
         .card ul { list-style: none; }
         .card ul li { font-size: 14px; font-weight: 600; color: #1E293B; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-        .card ul li::before { content: "•"; color: var(--terracotta); font-size: 20px; }
+        .card ul li::before { content: "✓"; color: var(--purple); font-weight: bold; }
 
         /* Form Section */
         .form-section { background: var(--dark); color: #fff; padding: 80px 20px; text-align: center; margin-top: 80px; }
@@ -51,7 +62,11 @@
 
     <header>
         <img src="logo.png" alt="EquipNext Logo" class="logo-img">
-        <a href="#apply" class="nav-cta">Enroll Now</a>
+        <nav>
+            <a href="#tracks">Tracks</a>
+            <a href="#why">Why Us</a>
+            <a href="#apply" class="nav-btn">Apply Now</a>
+        </nav>
     </header>
 
     <section class="hero">
@@ -60,32 +75,60 @@
         <p>An elite anti-tutorial creative studio and performance marketing incubator. Learn by managing real ad budgets, executing advanced digital workflows, and building production portfolios.</p>
     </section>
 
-    <!-- Detailed Pillars Section (Matching Industry Content Depth) -->
-    <div class="section-container">
-        <h2 class="section-title">The High-Income Tracks</h2>
-        <p class="section-desc">Structured learning models built precisely around how modern agencies and digital startups operate.</p>
+    <!-- Category Filter Tabs -->
+    <div class="tabs-container">
+        <button class="tab-btn active" onclick="filterTracks('all')">🔥 All Tracks</button>
+        <button class="tab-btn" onclick="filterTracks('marketing')">📈 Performance Marketing</button>
+        <button class="tab-btn" onclick="filterTracks('creative')">🎨 Creative & Tech</button>
+    </div>
+
+    <!-- Tracks Section -->
+    <div id="tracks" class="section-container">
+        <h2 class="section-title">Explore Our Specialized Tracks</h2>
+        <p class="section-desc">Designed precisely around agency standards and high-income execution.</p>
         
-        <div class="grid-2">
-            <div class="card">
+        <div class="grid-2" id="trackGrid">
+            <div class="card" data-category="marketing">
+                <div class="card-icon">📈</div>
                 <h3>Performance Marketing & Growth</h3>
                 <p>Master digital demand generation, paid media systems, and data-driven scaling.</p>
                 <ul>
                     <li>Meta Ads Manager & Advanced Google Ads</li>
-                    <li>Funnel Architecture & Conversion Rate Optimization (CRO)</li>
-                    <li>GA4 Analytics, Looker Studio Dashboards & UTM Tracking</li>
-                    <li>Real Budget Campaign Testing & Scaling Strategies</li>
+                    <li>Funnel Architecture & Conversion Optimization</li>
+                    <li>GA4 Analytics & Looker Studio Dashboards</li>
+                    <li>Real Budget Campaign Testing & Scaling</li>
                 </ul>
             </div>
             
-            <div class="card">
+            <div class="card" data-category="creative">
+                <div class="card-icon">🎨</div>
                 <h3>Creative Design & Modern Tech</h3>
                 <p>Build high-fashion visual brand assets and modern digital workflows.</p>
                 <ul>
                     <li>UI/UX Design Principles & Figma Wireframing</li>
                     <li>Advanced Video Editing (DaVinci Resolve & Photoshop)</li>
-                    <li>AI-Assisted Workflow Integration & Content Production</li>
-                    <li>Landing Page Development & Copywriting That Converts</li>
+                    <li>AI-Assisted Workflow Integration</li>
+                    <li>High-Conversion Landing Page Development</li>
                 </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Us / Features Section -->
+    <div id="why" class="section-container">
+        <h2 class="section-title">The "Anti-Coaching" Advantage</h2>
+        <p class="section-desc">Why ambitious students choose EquipNext over traditional classrooms.</p>
+        
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>100% Practical Execution</h3>
+                <p>No boring theoretical lectures. You spend your hours building live ad accounts, editing production videos, and shipping live websites.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🤝</div>
+                <h3>Direct Agency Mentorship</h3>
+                <p>Learn directly from active practitioners working in top-tier markets like Dubai and Kerala, ensuring your skills match current industry demands.</p>
             </div>
         </div>
     </div>
@@ -93,7 +136,7 @@
     <!-- Application Form Section -->
     <section id="apply" class="form-section">
         <h2 style="font-size: 2.5rem; font-weight: 900; letter-spacing: -1px;">Secure Your Spot in the Studio</h2>
-        <p style="color: #94A3B8; max-width: 600px; margin: 10px auto 0;">Fill out your details below to instantly connect with our team on WhatsApp and receive the complete August 2026 course guide.</p>
+        <p style="color: #94A3B8; max-width: 600px; margin: 10px auto 0;">Fill out your details below to instantly connect with our team on WhatsApp and receive the complete course curriculum.</p>
         
         <div class="form-wrapper">
             <form id="leadForm">
@@ -121,6 +164,22 @@
     </footer>
 
     <script>
+        function filterTracks(category) {
+            const cards = document.querySelectorAll('.card[data-category]');
+            const buttons = document.querySelectorAll('.tab-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
         document.getElementById('leadForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
